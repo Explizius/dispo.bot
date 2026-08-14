@@ -39,9 +39,9 @@ ohne dass jemand danebensitzt.
 Läuft lokal auf `http://127.0.0.1:8787`, komplett auf Deutsch. Kein Cloud-Dienst, kein
 Account, keine externe Verbindung — die Seite funktioniert auch offline.
 
-![Einsatzübersicht](img/panel-einsaetze.png)
-**Einsätze** — älteste zuerst. Wertverfall, Alter, Status, welche eigenen Fahrzeuge drauf
-sind und was noch fehlt. Eigene Einsätze und Verbandseinsätze getrennt.
+Der Startbildschirm ist die **Einsatzübersicht**: älteste zuerst, mit Wertverfall, Alter,
+Status, welche eigenen Fahrzeuge drauf sind und was noch fehlt — eigene Einsätze und
+Verbandseinsätze getrennt.
 
 ![Engpässe](img/panel-engpaesse.png)
 **Engpässe** — woran die Einsätze wirklich scheitern, gezählt je Einsatz statt je Abfrage.
@@ -56,8 +56,13 @@ eigene Einsätze im Verband geteilt werden.
 **Personal & Lehrgänge** — Zielpersonal je Wache, welche Ausbildung welche Wache braucht,
 in welcher Reihenfolge, und ab wann eine Wache zu dünn besetzt ist, um jemanden abzugeben.
 
-Dazu eine Konsole, in der jede Entscheidung mitlesbar ist: was alarmiert wurde, was noch
-wartet und woran es fehlt.
+Dazu eine Konsole, in der jede Entscheidung mitlesbar ist — dieselben Zeilen, die auch im
+Terminal stehen: was alarmiert wurde, was noch wartet und woran es fehlt.
+
+![Konsole](img/dispo.bot.cmd.jpg)
+**Konsole** — je Einsatz eine Zeile, dazu am Ende jedes Durchlaufs eine Zusammenfassung:
+was alarmiert wurde, was auf Fahrzeuge wartet, was fertig ist und wie viele Fahrzeuge frei
+sind.
 
 ## Was ihn unterscheidet
 
@@ -73,9 +78,13 @@ wartet und woran es fehlt.
 
 ## Systemvoraussetzungen
 
-- Windows 10/11, 64 Bit
-- Kein Node.js, keine Installation, keine Adminrechte — eine `.exe` und vier Textdateien
-- Rund 90 MB Speicherplatz
+Kein Node.js, keine Installation, keine Adminrechte — ein Programm und vier Textdateien.
+Rund 90 MB Speicherplatz. Es gibt je ein Paket:
+
+| | |
+|---|---|
+| **Windows** | 10/11, 64 Bit — `dispo.bot-win-*.zip`, entpacken und `dispo.exe` doppelklicken |
+| **macOS** | 11 (Big Sur) oder neuer, Apple Silicon — `dispo.bot-mac-*.zip`. macOS sperrt heruntergeladene Programme, deshalb liegt im Paket eine `LIESMICH-mac.txt` mit dem einen Befehl, der das aufhebt. Für einen älteren Intel-Mac im Discord fragen. |
 
 ## Lizenz
 
