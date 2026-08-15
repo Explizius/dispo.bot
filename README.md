@@ -18,12 +18,12 @@ Er fährt die Leitstelle, während du etwas anderes machst.
 
 ## Inhalt
 
-[Was er macht](#was-er-macht) ·
+[Was er für dich macht](#was-er-für-dich-macht) ·
 [Das Bedienpanel](#das-bedienpanel) ·
-[Die Einstellungen](#die-einstellungen) ·
-[Was ihn unterscheidet](#was-ihn-unterscheidet) ·
-[Systemvoraussetzungen](#systemvoraussetzungen) ·
-[Einrichten](#einrichten-in-fünf-schritten) ·
+[Was du einstellst](#was-du-einstellst) ·
+[Warum dieser und kein anderer](#warum-dieser-und-kein-anderer) ·
+[Voraussetzungen](#voraussetzungen) ·
+[Loslegen](#loslegen) ·
 [Vom Handy aus](#vom-handy-aus) ·
 [Aktualisieren](#aktualisieren) ·
 [Lizenz](#lizenz) ·
@@ -31,301 +31,304 @@ Er fährt die Leitstelle, während du etwas anderes machst.
 
 ---
 
-## Was er macht
+## Was er für dich macht
 
-Der Bot beobachtet deine offenen Einsätze und beantwortet sie selbstständig — dauerhaft,
-ohne dass jemand danebensitzt. Jede der folgenden Funktionen ist einzeln ein- und
-ausschaltbar; **in der Auslieferung ist jede Zusatzfunktion aus**, es passiert also nichts,
-was du nicht selbst eingeschaltet hast.
+Du machst den Rechner an und gehst weg. Der Bot beantwortet die Einsätze, fährt die
+Patienten ins Krankenhaus, hält deine Wachen besetzt und schickt die Leute in die
+Lehrgänge, die ihnen fehlen. Wenn du abends draufschaust, siehst du auf einem Blick, was
+gelaufen ist — und woran es gehakt hat.
 
-### Alarmieren
+**Alles ist einzeln abschaltbar, und ab Werk ist jede Zusatzfunktion aus.** Du entscheidest,
+was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 
-| | |
-|---|---|
-| **Erstalarm & Nachalarmierung** | Zwei verschiedene Entscheidungen, und sie werden getrennt getroffen: der erste Zug zu einem neuen Einsatz, und später genau das, was noch fehlt |
-| **Echter Fehlbestand** | Was der Einsatz laut Spiel noch braucht, nicht die starre Vorlage des Einsatztyps — damit zählen auch Fahrzeuge von Verbandspartnern mit |
-| **Patienten** | Je Patient RTW, NEF, LNA oder RTH, gelesen aus der Patientenliste des Einsatzes. Auch die Sammelform großer Einsätze („7 Patienten, davon 2 mit NEF-Bedarf") |
-| **Gefangene** | Je Gefangenem ein Streifenwagen — das Spiel nennt in seinem Fehlbestand nie ein Fahrzeug dafür, dieser Einsatz bliebe sonst ewig offen |
-| **Wasser, Schaum, Pumpenleistung** | Werden aus den Tankgrößen der Fahrzeuge gedeckt, große Tanks zuerst |
-| **Personal** | „28 Feuerwehrleute" wird mit MTF vor LF beantwortet, „1 Polizist" mit einem Streifenwagen — der MTF ist die einzige Besatzung, die sonst nichts kann |
-| **Doppelalarme ausgeschlossen** | Drei Ebenen: Sperrzeit nach dem Alarm, Abzug der bereits fahrenden eigenen Fahrzeuge, und ein Zähler gegen wirkungslose Wiederholungen |
-| **Radius & Mindest-Credits** | Wie weit ein Fahrzeug fährt und ab welchem Wert ein Einsatz überhaupt angefasst wird |
+### Einsätze
+
+- **Er alarmiert, was wirklich fehlt.** Nicht die Standardvorlage des Einsatztyps, sondern
+  das, was der Einsatz *in diesem Moment* noch braucht. Hat ein Verbandspartner schon ein
+  LF hingeschickt, schickt der Bot keins mehr — deine eigene Fahrzeugliste weiß davon
+  nichts, der Einsatz schon.
+- **Nachalarmierung, wenn ein Einsatz eskaliert.** Aus einem kleinen Brand werden vier
+  Fahrzeuge mehr: er merkt das beim nächsten Durchgang und legt nach.
+- **Patienten und Gefangene werden nicht vergessen.** Jeder Patient bekommt seinen RTW,
+  sein NEF, seinen LNA oder den RTH. Jeder Gefangene einen Streifenwagen — das ist die
+  Sorte Einsatz, die sonst die halbe Nacht offen steht, weil das Spiel von sich aus gar
+  nicht sagt, dass ein Fahrzeug fehlt.
+- **Wasser und Schaum werden zusammengerechnet.** Braucht ein Brand 14.800 Liter
+  Sonderlöschmittel, fahren die großen Tanks zuerst.
+- **Fehlendes Personal wird aufgefüllt** — und zwar so, dass dir nicht das Löschfahrzeug
+  fehlt, wenn es zehn Minuten später brennt.
+- **Kein Fahrzeug fährt doppelt.** Was schon unterwegs ist, wird abgezogen. Du wirst nie
+  drei RTW bei einem Patienten stehen haben.
 
 ### Transport
 
-| | |
-|---|---|
-| **Patient → Krankenhaus** | Nach Entfernung, freien Betten, Gebühr — passende Fachabteilung wird bevorzugt, aber nie erzwungen, sonst säße der Patient bei vollen Häusern für immer im RTW |
-| **Gefangener → Zelle** | Dasselbe für Streifenwagen und freie Zellen |
-| **Übergabeort** | Boot und Hubschrauber können kein Krankenhaus anfahren — der Patient wird an einer Rettungswache übergeben, und der Folgeeinsatz, den das Spiel daraus macht, wird ebenfalls beantwortet |
-| **Eigene Häuser zuerst** | Fremde Häuser sind der Rückfall, nicht der Konkurrent: die Gebühr bleibt bei 0 und die Credits im Haus |
-| **Alles voll → freilassen** | Sonst blockiert das Fahrzeug für immer und der Einsatz schließt nie. Ist etwas frei und nur durch deine Grenzen ausgeschlossen, wird gewartet und gesagt, welche Grenze es ist |
+- **Patient ins Krankenhaus, Gefangener in die Zelle** — nach Entfernung, freien Betten
+  bzw. Zellen und Gebühr, eigene Häuser zuerst. Die passende Fachabteilung wird bevorzugt,
+  aber nie erzwungen: sonst sitzt der Patient bei vollen Häusern für immer im RTW.
+- **Auch Boot und Hubschrauber.** Die können kein Krankenhaus anfahren, sondern übergeben
+  an einer Rettungswache — und den Folgeeinsatz, den das Spiel daraus macht, fährt der Bot
+  gleich mit.
+- **Ist wirklich alles voll, wird freigelassen.** Ein Fahrzeug, das ewig mit einem Patienten
+  herumsteht, kostet dich mehr als die eine Fahrt.
+
+*Das sind genau die Automatiken, die das Spiel selbst nur mit Premium anbietet.*
 
 ### Verband
 
-| | |
-|---|---|
-| **Verbandseinsätze mitfahren** | Eigener Radius, eigene Mindest-Credits, Obergrenze je Einsatz |
-| **Fester Fahrzeugsatz** | „Zu jedem Verbandseinsatz genau einen FuStW" — wahlweise nach Anforderungsschlüssel oder nach exaktem Fahrzeugtyp |
-| **Stehende Obergrenze** | Zusätzlich: wie viele Fahrzeuge eines Typs insgesamt gleichzeitig bei Partnern unterwegs sein dürfen. Wird jeden Durchlauf nachgezählt, nicht gemerkt — ein Neustart ändert nichts daran |
-| **Eigene Einsätze teilen** | Mit Vorsprung für die Partner: zuerst fährt nur *ein* Fahrzeug los, danach bleibt der Einsatz für die eingestellte Zeit unberührt, damit Partner ankommen können |
-| **Verbandsregeln abbildbar** | Mindestens N benötigte Fahrzeuge, und einzelne Einsatzarten (z. B. Rettungsdienst) grundsätzlich nie freigeben |
+- **Bei Einsätzen der Partner mitverdienen** — mit eigenem Radius, eigener Untergrenze und
+  einer Obergrenze, wie viele Fahrzeuge dabei überhaupt gebunden sein dürfen. Deine eigene
+  Leitstelle wird davon nicht leergeräumt.
+- **Fester Fahrzeugsatz.** „Zu jedem Verbandseinsatz einen FuStW, und nie mehr als elf
+  gleichzeitig unterwegs" ist eine Einstellung, keine Fleißarbeit.
+- **Eigene Einsätze teilen — mit echtem Vorsprung.** Erst fährt *ein* Fahrzeug los, dann
+  bleibt der Einsatz eine einstellbare Zeit lang liegen, damit deine Partner auch ankommen.
+  Danach macht er ihn selbst fertig. Ohne das ist Teilen nur eine Geste.
+- **Die Hausregeln deines Verbands sind einstellbar.** „Nur Einsätze ab 10 benötigten
+  Fahrzeugen freigeben" und „keine Rettungsdienst-Einsätze" hakst du an, statt dich daran
+  zu erinnern.
 
 ### Personal
 
-| | |
-|---|---|
-| **Anwerben** | Unterbesetzte Wachen starten von selbst eine Werbekampagne. Kostet keine Credits; Wachen, die schon werben oder auf Premium-Automatik stehen, werden in Ruhe gelassen |
-| **Lehrgänge** | Zielwerte je Wache oder je Wachentyp, mit Prioritätenliste. Eigene Schulen (kostenlos, belegt einen Klassenraum) und Verbandslehrgänge (kostet keinen Raum, kann Gebühren kosten) — der günstigere gewinnt |
-| **Kurse werden gefüllt, nicht nur gestartet** | Ein Klassenraum ist für dieselben Tage belegt, ob drei oder zehn Leute drin sitzen: die Plätze werden aus dem Bedarf *aller* Wachen aufgefüllt |
-| **Personalzuweisung** | 82 Fahrzeugtypen verlangen einen Lehrgang. Wer ihn hat und auf keinem Fahrzeug sitzt, wird gebunden — nie jemand, der schon zu einem anderen Fahrzeug gehört |
-| **Wachen bleiben einsatzfähig** | Wer im Lehrgang sitzt, kann nicht ausrücken. Unter einer eingestellten Mindeststärke gibt eine Wache niemanden ab |
+- **Unterbesetzte Wachen werben von selbst nach.** Kostet keine Credits, läuft nachts durch.
+- **Lehrgänge, ohne Excel-Liste.** Du sagst „jede Feuerwache soll 3 Gefahrgut und 6 Dekon-P
+  können", er sucht die passenden Kurse, schickt die Leute hin und hört auf, wenn das Ziel
+  erreicht ist. Mit **Prioritäten**: das Wichtigste wird überall erledigt, bevor irgendwo
+  das Zweitwichtigste anfängt.
+- **Startet ein Kurs, wird er auch vollgemacht** — mit Leuten aus allen Wachen, die ihn
+  brauchen. Ein halbleerer Klassenraum blockiert genauso lange wie ein voller.
+- **Die Ausgebildeten landen auf dem Fahrzeug.** Ein GW-Gefahrgut mit ungeschulter
+  Besatzung beantwortet nichts — er bindet die richtigen Leute fest, ohne dabei einem
+  anderen Fahrzeug die Besatzung wegzunehmen.
+- **Deine Wachen bleiben einsatzfähig.** Unter einer von dir gesetzten Mindeststärke gibt
+  eine Wache niemanden in den Lehrgang ab.
 
 ### Nebenbei
 
-| | |
-|---|---|
-| **Funkrufnamen** | Neu gekaufte Fahrzeuge bekommen den Namen, den dein Schema vorgibt — `Fl. Langen HLF 3-10` statt `HLF 20`. Von Hand benannte Fahrzeuge bleiben unberührt |
-| **Engpässe** | Zählt mit, woran deine Einsätze tatsächlich scheitern — die Antwort auf „welches Fahrzeug kaufe ich als nächstes" |
-| **Täglicher Login** | Der Tagesbonus wird abgeholt. Kostet an 364 Tagen im Jahr keine einzige zusätzliche Anfrage |
-| **Neue Einsätze** | Das Spiel erzeugt Einsätze nur, solange ein Client danach fragt — sonst füllt sich die Karte nicht. Der Bot fragt im selben Takt und unter derselben Obergrenze wie der Kartenreiter |
-| **Dienstplan** | Feste Dienstzeiten, täglich leicht verschoben. Außerhalb passiert **gar nichts**, und das Konto wird ausgeloggt |
-| **Mehrere Spielaccounts** | Jedes Konto mit eigenen Einstellungen, eigenem Cache, eigener Sitzung. Umschalten im laufenden Betrieb, wahlweise von Hand oder nach Dienstplan |
+- **Funkrufnamen.** Neue Fahrzeuge heißen `Fl. Langen HLF 3-10` statt `HLF 20` — nach
+  deinem Schema, automatisch weitergezählt. Von Hand benannte Fahrzeuge bleiben, wie sie
+  sind.
+- **Engpässe.** Er merkt sich, woran deine Einsätze tatsächlich gescheitert sind. Das ist
+  die Antwort auf „welches Fahrzeug kaufe ich als nächstes" — aus deinen echten Einsätzen,
+  nicht aus dem Bauchgefühl.
+- **Täglicher Login** wird abgeholt.
+- **Du brauchst keinen offenen Spiel-Tab.** Neue Einsätze entstehen nur, solange jemand
+  danach fragt — das macht er mit.
+- **Dienstplan.** Feste Dienstzeiten statt 24/7, jeden Tag um ein paar Minuten verschoben.
+  Außerhalb ist er komplett aus und ausgeloggt.
+- **Mehrere Spielaccounts.** Jeder mit eigenen Einstellungen. Umschalten per Klick oder nach
+  Plan, ohne Neustart.
 
 ---
 
 ## Das Bedienpanel
 
-Läuft lokal auf `http://127.0.0.1:8787`, komplett auf Deutsch. Kein Cloud-Dienst, kein
-Account, keine externe Verbindung — die Seite lädt nichts nach und funktioniert auch
-offline. Sechs Reiter.
+Die ganze Bedienung ist eine Seite im Browser, auf Deutsch, auf deinem eigenen Rechner
+(`http://127.0.0.1:8787`). Kein Konto, keine Anmeldung, keine Cloud. Sechs Reiter.
 
-### einsätze
+### einsätze — was gerade läuft
 
 ![Einsatzübersicht](img/panel-einsaetze.jpg)
 
-Der Startbildschirm: eine Zeile je Einsatz, älteste zuerst, mit Wertverfall, Alter, Status,
-welche eigenen Fahrzeuge drauf sind und was noch fehlt. Eigene Einsätze und
-Verbandseinsätze stehen als getrennte Blöcke untereinander — sie werden nach
-unterschiedlichen Regeln beantwortet und lesen sich deshalb als unterschiedliche Listen.
+Eine Zeile je Einsatz, älteste zuerst: wie viel Wert schon verfallen ist, wie lange er
+schon offen ist, was los ist, welche deiner Fahrzeuge draufsitzen und was noch fehlt.
+Eigene Einsätze oben, Verbandseinsätze unten.
 
-Der Status ist ein Wort, kein Symbol: *jetzt alarmiert*, *wartet auf fahrzeuge*,
-*auf anfahrt*, *beim verband · noch 6 min*, *abgedeckt*. Die Fahrzeuge stehen mit Typ und
-FMS-Status da, nicht mit ihrem Funkrufnamen — „BP 2-40" sagt nichts darüber, was für ein
-Fahrzeug angerückt ist. Gelb heißt: noch auf Anfahrt. Alter und Countdown laufen
-sekündlich weiter, und ein Einsatz, der über eine Stunde auf Fahrzeuge wartet, färbt sich.
+Bei den Fahrzeugen steht der **Typ**, nicht der Funkrufname — „BP 2-40" sagt dir nicht, ob
+ein Streifenwagen oder ein Rüstwagen angerückt ist. Gelb heißt: noch auf Anfahrt. Der
+Status ist ein Wort statt eines Symbols, das man erst deuten muss: *wartet auf fahrzeuge*,
+*auf anfahrt*, *beim verband · noch 6 min*, *abgedeckt*. Was über eine Stunde auf Fahrzeuge
+wartet, fällt farblich auf.
 
-### konsole
-
-Dieselben Zeilen wie im Terminal, im Browser. Jede Entscheidung ist mitlesbar.
+### konsole — warum er das gemacht hat
 
 ![Konsole](img/dispo.bot.cmd.jpg)
 
-Je Einsatz eine Zeile, dazu am Ende jedes Durchlaufs eine Zusammenfassung: was alarmiert
-wurde, was auf Fahrzeuge wartet, was fertig ist und wie viele Fahrzeuge frei sind.
+Jede Entscheidung mitlesbar, auch die, nichts zu tun. Am Ende jedes Durchgangs eine Zeile:
+was alarmiert wurde, was noch wartet, was fertig ist, wie viele Fahrzeuge frei sind.
 
-### engpässe
+### engpässe — was du kaufen solltest
 
 ![Engpässe](img/panel-engpaesse.jpg)
 
-Woran die Einsätze wirklich scheitern, gezählt **je Einsatz** statt je Abfrage — ein Einsatz,
-der eine Stunde auf einen FuStW wartet, ist ein fehlender FuStW, nicht hundert.
-`nicht im bestand` heißt: dieses Fahrzeug fehlt komplett, davon ist keines gekauft.
-`keins frei` heißt: es gibt welche, aber keines war frei oder in Reichweite — das eine ist
-eine Lücke im Fuhrpark, das andere ein Durchsatzproblem, und es sind zwei verschiedene
-Käufe. Dazu, seit wann, wie oft und für welchen Einsatz zuletzt. Je Zeile ein Knopf zum
-Zurücksetzen, für den Tag, an dem das Fahrzeug gekauft ist.
+Der Reiter, der sich bezahlt macht. Er zählt mit, welches Fahrzeug bei deinen Einsätzen
+gefehlt hat, und unterscheidet dabei zwei völlig verschiedene Probleme:
 
-Das ist die Antwort auf „was kaufe ich als nächstes" — aus dem, was tatsächlich passiert
-ist, nicht aus einem Gefühl.
+- **`nicht im bestand`** — davon hast du keines. Das erste muss her.
+- **`keins frei`** — du hast welche, aber sie waren besetzt oder zu weit weg. Da hilft
+  ein zweites, kein erstes.
 
-### lehrgänge
+Dazu, wie oft, seit wann und bei welchem Einsatz zuletzt. Ist das Fahrzeug gekauft, setzt
+du die Zeile zurück.
+
+### lehrgänge — was deine Leute können
 
 ![Lehrgänge](img/panel-lehrgaenge.jpg)
 
-Was deine Leute gerade lernen und was sie fertig haben, *laufend* und *abgeschlossen*
-getrennt, mit Restlaufzeit je Kurs. Das Spiel führt keine Liste abgeschlossener Lehrgänge —
-die Historie entsteht daraus, dass der Bot mitschreibt, und beginnt deshalb an dem Tag, an
-dem er das erste Mal geschaut hat.
+Laufende Kurse mit Restlaufzeit, abgeschlossene darunter. Oben rechts die Frage, die man
+sonst nirgends beantwortet bekommt: **wer ist ausgebildet und sitzt auf keinem Fahrzeug?**
+Ein fertiger Lehrgang bringt nichts, solange niemand eingeteilt ist.
 
-Oben rechts die zweite Hälfte derselben Frage: **wer ausgebildet ist und auf keinem
-Fahrzeug sitzt**, je Lehrgang und je Wache. Ein fertiger Kurs bringt nichts, solange
-niemand gebunden ist — und welcher Lehrgang Leute übrig hat, entscheidet, ob ein Ziel
-wirklich noch offen ist.
+### fahrzeuge — dein Fuhrpark
 
-### fahrzeuge
-
-Deine Flotte als Tabelle: Typ, Bestand, wie viele davon frei sind, und die Vorlage für den
-Funkrufnamen. Ein Typ, für den keine Zuordnung hinterlegt ist, wird rot markiert — das sind
-die, die nie alarmiert werden. Ein Typ, von dem gerade keins frei ist, wird gelb.
-Darunter die Abdeckung: jeder Anforderungsschlüssel des Spiels gegen die Zahl eigener
-Fahrzeugtypen, die ihn erfüllen. Eine 0 kann nie beantwortet werden.
+Alle Typen mit Bestand und wie viele davon gerade frei sind. Rot markiert heißt: für diesen
+Typ ist nichts hinterlegt, der wird nie alarmiert — ein Blick, und du weißt, ob dein Neukauf
+tatsächlich mitspielt. Darunter, welche Anforderungen deine Flotte überhaupt abdecken kann.
 
 ![Funkrufnamen — die Vorlagen](img/panel-funkrufnamen.jpg)
 
-Auf derselben Seite steht, was in eine Namensvorlage hineindarf: die vier Variablen, dass
-beide Zahlen eine Rechnung vertragen (`{N+1}`, `{N/10}`), und drei durchgerechnete
-Beispiele. Die Vorlage wird **genau so verwendet, wie sie dasteht** — leer heißt, dieser Typ
-wird nie umbenannt, und ohne `{N}` gibt es keine Nummer.
-
-Der **Expertenmodus** schaltet frei, was normalerweise gesperrt ist: Schlüssel und
-Kapazitäten sind aus den Marktseiten des Spiels gelesene Tatsachen, kein Geschmack — ein
-Tippfehler dort schickt still das falsche Fahrzeug. Die Namensvorlage ist die eine Spalte,
-die niemand nachschlagen kann, und bleibt immer editierbar.
+Hier steht auch, wie eine Namensvorlage aufgebaut ist: die vier Bausteine, drei
+durchgerechnete Beispiele, und dass eine leere Vorlage bedeutet „diesen Typ nie umbenennen".
 
 ### einstellungen
 
-`config.json`, jede Zeile davon, als Formular — mit Suche über alle Bereiche, einer
-deutschen Beschriftung je Zeile und einem Satz Erklärung hinter jedem `?`.
+Alles, was der Bot tut, in einem Formular — mit Suche, deutscher Beschriftung und einem Satz
+Erklärung hinter jedem `?`. Was man normalerweise nicht anfasst, liegt hinter dem Schalter
+*erweitert*.
 
 ---
 
-## Die Einstellungen
+## Was du einstellst
 
-Sieben Bereiche in einer Leiste links. Was normalerweise keiner anfasst, liegt hinter dem
-Schalter **erweitert**.
+Acht Bereiche. Das meiste stellst du einmal ein und schaust nie wieder hin.
 
-| Bereich | Was drin steht |
+| Bereich | Worum es geht |
 |---|---|
-| **konto** | Deine Spiel-Logins und der Lizenzschlüssel. Je Konto ein An/Aus-Schalter, dazu die Auswahl, welches gerade spielt |
-| **dienst** | Dienstplan (Zeitblöcke, je Block ein Konto), tägliche Verschiebung, und der Takt: Pause zwischen zwei Durchläufen, Streuung, Leerlauf-Verlängerung |
-| **einsätze** | Radius, Mindest-Credits, ob unvollständig ausgerückt wird — und die Alarmierungs-Interna: Fehlbedarf vom Spiel übernehmen, Sperrzeit, Wiederholungsschutz |
-| **verband** | Verbandseinsätze annehmen (Radius, Fahrzeuge je Einsatz, fester Satz mit Obergrenze) und eigene Einsätze teilen (Mindest-Credits, Mindestgröße, ausgenommene Einsatzarten, Vorsprung in Minuten) |
-| **transport** | Patient → Krankenhaus und Gefangener → Zelle: eigene Häuser, Mindestbetten, Höchstgebühr, Höchstentfernung |
-| **personal** | Die drei Hälften eines Themas, in der Reihenfolge, in der sie passieren: anwerben, ausbilden, aufs Fahrzeug setzen |
-| **fahrzeuge** | Funkrufnamen: an/aus, nur unbenannte, Schrittweite, eigene Ortsnamen — dazu eine Liste, welche Wache der Geocoder wie nennt und was daraus wird |
-| **system** | Port des Panels und die Tailscale-Adresse |
+| **konto** | Dein Spiel-Login und der Lizenzschlüssel. Mehrere Accounts, jeder mit eigenem An/Aus |
+| **dienst** | Wann er arbeitet, und wie oft er nachschaut |
+| **einsätze** | Wie weit deine Fahrzeuge fahren und ab welchem Wert ein Einsatz sich lohnt |
+| **verband** | Mitfahren bei den Partnern, und was du selbst freigibst |
+| **transport** | Wohin ein beladenes Fahrzeug fährt |
+| **personal** | Anwerben, ausbilden, aufs Fahrzeug setzen |
+| **fahrzeuge** | Funkrufnamen und die Ortsnamen darin |
+| **system** | Port der Seite, Zugriff vom Handy |
 
 ![Einstellungen — Dienst](img/panel-dienst.jpg)
 
-**dienst** — der Dienstplan als Liste von Zeitblöcken, je Block ein Konto. Mit einem Konto
-ist das schlicht die Dienstzeit, eine Zeile. Über Mitternacht (`21:00`–`01:00`) ist
-erlaubt, eine Zeit, die kein Block abdeckt, ist Pause. *zeiten täglich verschieben* rückt
-jede Grenze jeden Tag um bis zu 20 Minuten — sonst ist der Bot jeden Tag auf die Minute
-genau zur selben Zeit online, und genau das fällt auf.
+**dienst** — der Dienstplan als Liste: von, bis, welches Konto. Mit einem Account ist das
+schlicht deine Spielzeit, eine Zeile. Über Mitternacht geht. Zeiten, die kein Block abdeckt,
+sind Pause — dann ist er wirklich aus. *Zeiten täglich verschieben* sorgt dafür, dass du
+nicht 365 Tage lang auf die Minute genau um 07:00 online bist.
 
 ![Einstellungen — Verband](img/panel-verband.jpg)
 
-**verband** — Radius, Fahrzeuge je Einsatz, fester Fahrzeugsatz mit stehender Obergrenze,
-und wann und was im Verband geteilt wird. Die auszunehmenden Einsatzarten sind Kästchen,
-keine Textzeile: es sind achtzehn, und ein Tippfehler wäre eine Einsatzart, die still
-weiter geteilt wird.
+**verband** — Radius, Fahrzeuge je Einsatz, der feste Fahrzeugsatz mit Obergrenze, und wann
+und was du freigibst. Die Einsatzarten, die nie in den Verband sollen, hakst du an — es
+sind achtzehn, und getippt wäre eine davon irgendwann falsch geschrieben und würde still
+weiter geteilt.
 
 ![Einstellungen — Transport](img/panel-transport.jpg)
 
-**transport** — wohin ein beladenes Fahrzeug fährt. Vier Zahlen je Richtung, und das sind
-genau die Premium-Einstellungen des Spiels, hier ohne Premium.
+**transport** — vier Zahlen je Richtung: eigene Häuser oder auch fremde, was eine Fahrt
+höchstens kosten darf, wie weit, und wie viele Betten bzw. Zellen frei sein müssen.
 
 ![Einstellungen — Personal](img/panel-personal.jpg)
 
-**personal** — die drei Schritte untereinander: anwerben, ausbilden, aufs Fahrzeug setzen.
-Die Zieltabelle unten ist der Kern: je Zeile eine Wache (oder ein ganzer Wachentyp), ein
-Lehrgang und wie viele Leute ihn haben sollen. Die **Priorität** ist eine eigene Spalte —
-Rang 1 wird an *jeder* Wache bedient, bevor irgendwo Rang 2 anfängt, sonst gewinnt immer
-die größte Lücke. Darunter ausklappbar, auf welche Wachen eine Regel tatsächlich fällt und
-welche davon zu dünn besetzt sind, um jemanden abzugeben.
+**personal** — die drei Schritte untereinander. Die Tabelle unten ist das Herzstück: je
+Zeile eine Wache (oder gleich ein ganzer Wachentyp), ein Lehrgang, wie viele Leute ihn
+können sollen. Die **Priorität** links entscheidet die Reihenfolge — sonst gewinnt immer
+die größte Lücke, und das eine Ziel, das dir wichtig ist, kommt nie dran. Ausklappbar
+darunter: auf welche Wachen eine Zeile tatsächlich zutrifft, und welche davon zu dünn
+besetzt sind, um jemanden abzugeben.
 
 ![Einstellungen — eigene Ortsnamen](img/panel-ortsnamen.jpg)
 
-**fahrzeuge** — Funkrufnamen, und die Tabelle *eigene Ortsnamen*: was der Ortsname auf dem
-Fahrzeug werden soll. Links steht entweder ein Name, wie ihn der Geocoder liefert, oder
-eine **Postleitzahl** — die zählt dann als eigener Ort. Genau dafür ist sie da: `60549` ist
-der Frankfurter Flughafen, und die Stadt allein unterscheidet ihn von keiner anderen
-Frankfurter Wache. Darunter ausklappbar, welche Wache wie ermittelt wurde und was daraus
-wird; das ist die Antwort auf „warum heißt das Fahrzeug so".
+**fahrzeuge** — wie der Ort im Funkrufnamen heißen soll. Links entweder ein Ortsname oder
+eine **Postleitzahl**: `60549` ist der Frankfurter Flughafen, und „Frankfurt am Main" allein
+unterscheidet ihn von keiner anderen Frankfurter Wache. Darunter kannst du aufklappen,
+welche Wache wie erkannt wurde — das ist die Antwort auf „warum heißt das Fahrzeug so".
 
 ---
 
-## Was ihn unterscheidet
+## Warum dieser und kein anderer
 
-- **Er liest den echten Fehlbestand des Spiels**, nicht eine feste Vorlage. Damit zählen
-  auch die Fahrzeuge der Verbandspartner mit, die deine eigene Fahrzeugliste gar nicht sieht.
-- **Kein Raten.** Ein Fahrzeugtyp ohne hinterlegte Zuordnung wird gemeldet, nicht auf
-  Verdacht losgeschickt. Ein unbekannter Text im Fehlbestand wird protokolliert, nicht
-  interpretiert. Zu wenig zu schicken ist die sichere Richtung.
-- **Sparsam.** Zwei Anfragen pro Durchlauf, egal ob drei oder dreißig Einsätze offen sind.
-  Kein Abruf je Einsatz, keine Seite, die zweimal geholt wird.
-- **Unauffällig.** Zufällige Abstände zwischen den Durchläufen, zufällige Reihenfolge beim
-  Alarmieren, zufällige Pausen zwischen zwei Alarmen. Außerhalb der Dienstzeit passiert gar
-  nichts, und das Konto ist dann ausgeloggt statt sechzehn Stunden am Stück online.
-- **Nichts läuft heimlich.** Jede Entscheidung steht in der Konsole und im Logfile, mit dem
-  Grund daneben — auch die, nichts zu tun.
-- **Deine Daten bleiben bei dir.** Die Zugangsdaten liegen verschlüsselt auf deinem Rechner
-  (an diesen Rechner gebunden, nicht in einer zweiten Datei danebengelegt), und der gesamte
-  Spielverkehr läuft über deine eigene IP-Adresse. Der Bot fragt genau eine Adresse außerhalb
-  des Spiels — OpenStreetMap für `{ORT}`, einmal je Wache, und nur wenn du Funkrufnamen mit
-  Ortsnamen benutzt.
+**Er alarmiert nach dem echten Bedarf, nicht nach Schema F.**
+Der Unterschied merkt man am Monatsende: kein zweites LF zu einem Einsatz, an dem schon
+eines steht, keine drei RTW für einen Patienten, keine Fahrzeuge, die sinnlos gebunden sind
+und beim nächsten Brand fehlen.
+
+**Er rät nie.**
+Kennt er ein Fahrzeug oder eine Anforderung nicht, sagt er das — statt auf Verdacht die
+Drehleiter zum Gasaustritt zu schicken. Lieber einmal zu wenig als einmal falsch.
+
+**Er fällt nicht auf.**
+Unregelmäßige Abstände, wechselnde Reihenfolge, Pausen zwischen den Alarmen, und außerhalb
+deiner Dienstzeit passiert nichts und der Account ist ausgeloggt. Ein Spieler, der sechzehn
+Stunden am Stück online ist und im immer gleichen Takt alarmiert, fällt genau dadurch auf —
+und das ist der Punkt, an dem es um deinen Account geht.
+
+**Er ist schonend zu deinem Spiel.**
+Er lädt pro Durchgang einmal die Lage und arbeitet damit — egal ob drei oder dreißig
+Einsätze offen sind. Kein Dauerfeuer auf die Server, auch nicht bei viel Betrieb.
+
+**Deine Daten bleiben bei dir.**
+Deine Zugangsdaten liegen verschlüsselt auf deinem Rechner und gehen nirgendwohin. Das
+Spiel sieht ausschließlich deine eigene IP-Adresse — nicht die eines Rechenzentrums, hinter
+dem hundert andere Kunden hängen.
+
+**Nichts passiert hinter deinem Rücken.**
+Jede Entscheidung steht in der Konsole und im Logfile, mit dem Grund daneben. Und ab Werk
+ist alles Zusätzliche aus: du schaltest frei, was du willst.
 
 ---
 
-## Systemvoraussetzungen
+## Voraussetzungen
 
-Kein Node.js, keine Installation, keine Adminrechte — ein Programm und ein paar
-Textdateien. Rund 90 MB Speicherplatz. Es gibt je ein Paket:
+Kein Node.js, keine Installation, keine Adminrechte. Entpacken, doppelklicken, fertig.
+Rund 90 MB Speicherplatz und ein Browser.
 
 | | |
 |---|---|
-| **Windows** | 10/11, 64 Bit — `dispo.bot-win-*.zip`, entpacken und `dispo.exe` doppelklicken. Beim ersten Start meldet sich eventuell SmartScreen: *Weitere Informationen* → *Trotzdem ausführen*. Das liegt an der fehlenden (teuren) Signatur, nicht am Inhalt |
-| **macOS** | 11 (Big Sur) oder neuer, Apple Silicon — `dispo.bot-mac-*.zip`. macOS sperrt heruntergeladene Programme, deshalb liegt im Paket eine `LIESMICH-mac.txt` mit dem einen Befehl, der das aufhebt. Für einen älteren Intel-Mac im Discord fragen |
-
-Ein Browser für das Panel. Sonst nichts — insbesondere kein offener Spiel-Tab.
+| **Windows** | 10/11, 64 Bit — `dispo.bot-win-*.zip` entpacken, `dispo.exe` doppelklicken. Beim ersten Start meldet sich eventuell SmartScreen: *Weitere Informationen* → *Trotzdem ausführen*. Das liegt an der fehlenden (teuren) Signatur, nicht am Inhalt |
+| **macOS** | 11 (Big Sur) oder neuer, Apple Silicon — `dispo.bot-mac-*.zip`. macOS blockiert heruntergeladene Programme; im Paket liegt eine `LIESMICH-mac.txt` mit dem einen Befehl, der das aufhebt. Für einen älteren Intel-Mac im Discord fragen |
 
 ---
 
-## Einrichten in fünf Schritten
+## Loslegen
 
-1. **Herunterladen** — das Paket für dein System, aus den *Releases* hier.
+1. **Herunterladen** — das Paket für dein System, unter *Releases*.
 2. **Entpacken und starten** — in einen eigenen Ordner, dann `dispo.exe` doppelklicken
    (macOS: `./dispo`).
 3. **Panel öffnen** — im Fenster steht nach ein paar Sekunden eine Adresse wie
-   `http://127.0.0.1:8787`. Die im Browser öffnen; das ist die ganze Bedienung.
-4. **Lizenz eintragen** — unter *einstellungen → konto*, dann *aktivieren*.
+   `http://127.0.0.1:8787`. Die im Browser aufmachen.
+4. **Lizenz eintragen** unter *einstellungen → konto*, dann *aktivieren*.
    **Ab diesem Klick läuft deine Laufzeit, nicht ab dem Kauf** — ein Schlüssel kann also
-   monatelang ungenutzt liegen, ohne einen Tag zu verlieren.
-5. **Konto und Dienstzeit setzen** — dein Login für leitstellenspiel.de unter
-   *einstellungen → konto*, danach den Dienstplan. Den Rest in Ruhe durchgehen; jede
-   Einstellung hat ein `?` mit einem Satz dazu.
+   liegen bleiben, ohne einen Tag zu verlieren.
+5. **Login und Dienstzeit setzen**, danach in Ruhe durchgehen, was er noch übernehmen soll.
+   Jede Einstellung erklärt sich hinter ihrem `?`.
 
 ---
 
 ## Vom Handy aus
 
-Das Panel hat kein Passwort, und deshalb hört es standardmäßig nur auf `127.0.0.1` —
-erreichbar von dem Rechner, auf dem es läuft, und von sonst nirgendwo.
+Die Seite hat kein Passwort und ist deshalb erst mal nur auf deinem eigenen Rechner
+erreichbar. Wenn du sie unterwegs sehen willst: **[Tailscale](https://tailscale.com)** auf
+beiden Geräten installieren, gleiches Konto, fertig. Der Bot findet die Adresse selbst und
+schreibt sie beim Start hin.
 
-Wer es vom Handy aus lesen will, installiert **[Tailscale](https://tailscale.com)** auf
-beiden Geräten unter demselben Konto. Mehr ist nicht zu tun: der Bot findet seine
-Tailscale-Adresse selbst und nennt sie beim Start als zweite Zeile. Diese Adresse ist nur
-über das eigene, verschlüsselte Netz erreichbar — das ersetzt das Passwort, das diese Seite
-sonst bräuchte. **Eine andere Adresse wird abgelehnt**, ausdrücklich und mit Meldung im Log:
-diese Seite schreibt deine Zugangsdaten, sie gehört nicht ins offene Internet.
+Alles andere lehnt er ab, und zwar absichtlich: auf dieser Seite stehen deine Zugangsdaten,
+die gehört nicht ins offene Internet.
 
-Auf dem Telefon wird jede Tabellenzeile zu einem Block, die Bedienelemente werden größer,
-und alle sechs Reiter sind gleichzeitig sichtbar.
+Auf dem Telefon wird aus jeder Tabellenzeile ein lesbarer Block, und alle sechs Reiter sind
+gleichzeitig sichtbar.
 
 ---
 
 ## Aktualisieren
 
 Neues Paket herunterladen und **über den vorhandenen Ordner entpacken**, alles überschreiben
-lassen. Deine Einstellungen bleiben: `config.json`, der Ordner `accounts/`, die Zugangsdaten,
-die Lizenz und die Funkrufnamen in `data/vehicleMap.json` liegen **nicht im Paket** und
-werden nicht angefasst. Neue Fahrzeugtypen aus dem Update werden beim nächsten Start
-automatisch ergänzt, ohne deine eigenen Zeilen zu berühren.
+lassen. Deine Einstellungen, deine Zugangsdaten, deine Lizenz und deine Funkrufnamen bleiben
+— die sind gar nicht erst im Paket drin. Neue Fahrzeugtypen kommen beim nächsten Start von
+selbst dazu.
 
-Was sich in welcher Version geändert hat, steht im Discord unter `#changelog`.
+Was sich geändert hat, steht im Discord unter `#changelog`.
 
 ---
 
 ## Lizenz
 
-Der Bot braucht einen Lizenzschlüssel; eingetragen wird er direkt im Panel. Ein Schlüssel
-läuft **ab der ersten Aktivierung** und gilt für **eine laufende Installation** — beliebig
-viele Spielaccounts, aber nicht zwei Rechner gleichzeitig.
-
-Die Planung läuft auf einem Server; der Bot fragt einmal je Durchlauf nach, was zu tun ist,
-und alarmiert dann selbst. Deine Spiel-Zugangsdaten sehen diesen Server nie, und der gesamte
-Spielverkehr geht von deinem eigenen Anschluss aus.
+Der Bot braucht einen Schlüssel, den du direkt im Panel einträgst. Er läuft **ab der ersten
+Aktivierung** und gilt für **eine laufende Installation** — beliebig viele Spielaccounts,
+aber nicht zwei Rechner gleichzeitig.
 
 Schlüssel gibt es über Discord.
 
@@ -334,25 +337,33 @@ Schlüssel gibt es über Discord.
 ## Häufige Fragen
 
 **Muss ein Spiel-Tab offen bleiben?**
-Nein. Der Bot übernimmt auch das Anfordern neuer Einsätze — ohne das füllt sich die Karte
-gar nicht, egal wer sonst zuschaut.
+Nein. Er sorgt selbst dafür, dass neue Einsätze entstehen — ohne das füllt sich die Karte
+gar nicht, egal wer zuschaut.
 
-**Läuft er rund um die Uhr?**
-Nur wenn du das willst. Mit Dienstplan arbeitet er in den eingetragenen Zeiten, verschiebt
-die Grenzen täglich um ein paar Minuten und ist außerhalb ausgeloggt.
+**Muss mein Rechner durchlaufen?**
+Nur, solange er spielen soll. Mit Dienstplan arbeitet er in deinen Zeiten und ist sonst aus.
 
-**Was passiert bei einem Absturz?**
-Er startet sich 30 Sekunden später neu. Was er sich merken muss — laufende Werbekampagnen,
-Sperrzeiten, ermittelte Ortsnamen — liegt auf der Platte und übersteht das.
+**Was, wenn er abstürzt?**
+Er startet sich 30 Sekunden später von selbst neu und macht da weiter, wo er war.
 
-**Kann ich sehen, was er tut, bevor er es tut?**
-Ja: die Konsole schreibt je Einsatz eine Zeile mit dem Grund. Und alles Zusätzliche ist
+**Kann ich sehen, was er vorhat, bevor er es tut?**
+Ja — die Konsole schreibt jede Entscheidung mit Begründung mit. Und alles Zusätzliche ist
 ab Werk aus, du schaltest es einzeln frei.
+
+**Braucht er Premium?**
+Nein. Im Gegenteil: Transportziele automatisch wählen ist im Spiel eine Premium-Funktion,
+und genau das macht er auch ohne.
+
+**Kostet er Credits oder Coins?**
+Nein. Er gibt keine Coins aus — die Sofort-Varianten beim Anwerben rührt er gar nicht erst
+an. Verbandslehrgänge können Gebühren kosten; die Obergrenze dafür setzt du selbst, und mit
+`0` nimmt er nur kostenlose.
 
 **Wird mein Spielaccount gesperrt?**
 Automatisierung kann gegen die Spielregeln verstoßen. Der Bot gibt sich Mühe, nicht wie
-einer auszusehen — feste Taktung, starre Reihenfolge und Dauerpräsenz sind die auffälligsten
-Merkmale, und keines davon hat er. Eine Garantie ist das nicht.
+einer auszusehen — die auffälligsten Merkmale (fester Takt, starre Reihenfolge, rund um die
+Uhr online) hat er alle nicht. Eine Garantie ist das nicht, und die Entscheidung liegt bei
+dir.
 
 ---
 
@@ -362,7 +373,7 @@ Discord: <!-- TODO: Einladungslink eintragen -->
 
 Fehler und Wünsche gehören in `#bugs-und-wünsche` — bitte mit Version, was du erwartet hast,
 was passiert ist und dem passenden Auszug aus `logs/`. Alles Persönliche (Kauf, Schlüssel,
-dein Account) über ein Ticket. **Niemals Passwörter, `credentials.json` oder Screenshots mit
+dein Account) über ein Ticket. **Niemals Passwörter, Zugangsdaten oder Screenshots mit
 Login posten** — auch nicht an das Team, wir fragen danach nie.
 
 ## Hinweise
