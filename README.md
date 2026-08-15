@@ -326,7 +326,7 @@ dir.
 
 Alles läuft über Discord: Schlüssel, Fragen, Fehler, Wünsche.
 
-Discord: <!-- TODO: Einladungslink eintragen -->
+Discord: https://discord.gg/86u24ZDyAN
 
 Bei einem Fehler hilft es sehr, wenn du die Version, was du erwartet hast, was passiert ist
 und den passenden Auszug aus `logs/` gleich mitschickst. **Niemals Passwörter, Zugangsdaten
