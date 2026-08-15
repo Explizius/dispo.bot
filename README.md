@@ -102,38 +102,56 @@ offline. Sechs Reiter.
 
 ### einsätze
 
+![Einsatzübersicht](img/panel-einsaetze.jpg)
+
 Der Startbildschirm: eine Zeile je Einsatz, älteste zuerst, mit Wertverfall, Alter, Status,
 welche eigenen Fahrzeuge drauf sind und was noch fehlt. Eigene Einsätze und
 Verbandseinsätze stehen als getrennte Blöcke untereinander — sie werden nach
 unterschiedlichen Regeln beantwortet und lesen sich deshalb als unterschiedliche Listen.
 
 Der Status ist ein Wort, kein Symbol: *jetzt alarmiert*, *wartet auf fahrzeuge*,
-*auf anfahrt*, *beim verband · noch 6 min*, *abgedeckt*. Alter und Countdown laufen
-sekündlich weiter, ein Einsatz, der über eine Stunde auf Fahrzeuge wartet, färbt sich.
+*auf anfahrt*, *beim verband · noch 6 min*, *abgedeckt*. Die Fahrzeuge stehen mit Typ und
+FMS-Status da, nicht mit ihrem Funkrufnamen — „BP 2-40" sagt nichts darüber, was für ein
+Fahrzeug angerückt ist. Gelb heißt: noch auf Anfahrt. Alter und Countdown laufen
+sekündlich weiter, und ein Einsatz, der über eine Stunde auf Fahrzeuge wartet, färbt sich.
 
 ### konsole
 
 Dieselben Zeilen wie im Terminal, im Browser. Jede Entscheidung ist mitlesbar.
 
 ![Konsole](img/dispo.bot.cmd.jpg)
+
 Je Einsatz eine Zeile, dazu am Ende jedes Durchlaufs eine Zusammenfassung: was alarmiert
 wurde, was auf Fahrzeuge wartet, was fertig ist und wie viele Fahrzeuge frei sind.
 
 ### engpässe
 
-![Engpässe](img/panel-engpaesse.png)
+![Engpässe](img/panel-engpaesse.jpg)
+
 Woran die Einsätze wirklich scheitern, gezählt **je Einsatz** statt je Abfrage — ein Einsatz,
 der eine Stunde auf einen FuStW wartet, ist ein fehlender FuStW, nicht hundert.
-`nicht im bestand` heißt: dieses Fahrzeug fehlt komplett. `keins frei` heißt: zu wenige.
-Das ist die Antwort auf „was kaufe ich als nächstes". Je Zeile ein Knopf zum Zurücksetzen,
-für den Tag, an dem das Fahrzeug gekauft ist.
+`nicht im bestand` heißt: dieses Fahrzeug fehlt komplett, davon ist keines gekauft.
+`keins frei` heißt: es gibt welche, aber keines war frei oder in Reichweite — das eine ist
+eine Lücke im Fuhrpark, das andere ein Durchsatzproblem, und es sind zwei verschiedene
+Käufe. Dazu, seit wann, wie oft und für welchen Einsatz zuletzt. Je Zeile ein Knopf zum
+Zurücksetzen, für den Tag, an dem das Fahrzeug gekauft ist.
+
+Das ist die Antwort auf „was kaufe ich als nächstes" — aus dem, was tatsächlich passiert
+ist, nicht aus einem Gefühl.
 
 ### lehrgänge
 
-Was deine Leute gerade lernen und was sie fertig haben, laufend und abgeschlossen getrennt.
-Daneben die zweite Hälfte derselben Frage: **wer ausgebildet ist und auf keinem Fahrzeug
-sitzt**, je Lehrgang und je Wache. Ein fertiger Kurs bringt nichts, solange niemand gebunden
-ist — und welcher Lehrgang Leute übrig hat, entscheidet, ob ein Ziel noch offen ist.
+![Lehrgänge](img/panel-lehrgaenge.jpg)
+
+Was deine Leute gerade lernen und was sie fertig haben, *laufend* und *abgeschlossen*
+getrennt, mit Restlaufzeit je Kurs. Das Spiel führt keine Liste abgeschlossener Lehrgänge —
+die Historie entsteht daraus, dass der Bot mitschreibt, und beginnt deshalb an dem Tag, an
+dem er das erste Mal geschaut hat.
+
+Oben rechts die zweite Hälfte derselben Frage: **wer ausgebildet ist und auf keinem
+Fahrzeug sitzt**, je Lehrgang und je Wache. Ein fertiger Kurs bringt nichts, solange
+niemand gebunden ist — und welcher Lehrgang Leute übrig hat, entscheidet, ob ein Ziel
+wirklich noch offen ist.
 
 ### fahrzeuge
 
@@ -142,6 +160,13 @@ Funkrufnamen. Ein Typ, für den keine Zuordnung hinterlegt ist, wird rot markier
 die, die nie alarmiert werden. Ein Typ, von dem gerade keins frei ist, wird gelb.
 Darunter die Abdeckung: jeder Anforderungsschlüssel des Spiels gegen die Zahl eigener
 Fahrzeugtypen, die ihn erfüllen. Eine 0 kann nie beantwortet werden.
+
+![Funkrufnamen — die Vorlagen](img/panel-funkrufnamen.jpg)
+
+Auf derselben Seite steht, was in eine Namensvorlage hineindarf: die vier Variablen, dass
+beide Zahlen eine Rechnung vertragen (`{N+1}`, `{N/10}`), und drei durchgerechnete
+Beispiele. Die Vorlage wird **genau so verwendet, wie sie dasteht** — leer heißt, dieser Typ
+wird nie umbenannt, und ohne `{N}` gibt es keine Nummer.
 
 Der **Expertenmodus** schaltet frei, was normalerweise gesperrt ist: Schlüssel und
 Kapazitäten sind aus den Marktseiten des Spiels gelesene Tatsachen, kein Geschmack — ein
@@ -171,14 +196,43 @@ Schalter **erweitert**.
 | **fahrzeuge** | Funkrufnamen: an/aus, nur unbenannte, Schrittweite, eigene Ortsnamen — dazu eine Liste, welche Wache der Geocoder wie nennt und was daraus wird |
 | **system** | Port des Panels und die Tailscale-Adresse |
 
-![Einstellungen — Verband](img/panel-verband.jpg)
-**verband** — Radius, Fahrzeuge je Einsatz, fester Fahrzeugsatz mit Obergrenze, und wann
-und was im Verband geteilt wird. Die Einsatzarten sind Kästchen, keine Textzeile: es sind
-achtzehn, und ein Tippfehler wäre eine Einsatzart, die still weiter geteilt wird.
+![Einstellungen — Dienst](img/panel-dienst.jpg)
 
-![Einstellungen — Personal](img/panel-personal.png)
-**personal** — Zielpersonal je Wache, welche Ausbildung welche Wache braucht, in welcher
-Reihenfolge, und ab wann eine Wache zu dünn besetzt ist, um jemanden abzugeben.
+**dienst** — der Dienstplan als Liste von Zeitblöcken, je Block ein Konto. Mit einem Konto
+ist das schlicht die Dienstzeit, eine Zeile. Über Mitternacht (`21:00`–`01:00`) ist
+erlaubt, eine Zeit, die kein Block abdeckt, ist Pause. *zeiten täglich verschieben* rückt
+jede Grenze jeden Tag um bis zu 20 Minuten — sonst ist der Bot jeden Tag auf die Minute
+genau zur selben Zeit online, und genau das fällt auf.
+
+![Einstellungen — Verband](img/panel-verband.jpg)
+
+**verband** — Radius, Fahrzeuge je Einsatz, fester Fahrzeugsatz mit stehender Obergrenze,
+und wann und was im Verband geteilt wird. Die auszunehmenden Einsatzarten sind Kästchen,
+keine Textzeile: es sind achtzehn, und ein Tippfehler wäre eine Einsatzart, die still
+weiter geteilt wird.
+
+![Einstellungen — Transport](img/panel-transport.jpg)
+
+**transport** — wohin ein beladenes Fahrzeug fährt. Vier Zahlen je Richtung, und das sind
+genau die Premium-Einstellungen des Spiels, hier ohne Premium.
+
+![Einstellungen — Personal](img/panel-personal.jpg)
+
+**personal** — die drei Schritte untereinander: anwerben, ausbilden, aufs Fahrzeug setzen.
+Die Zieltabelle unten ist der Kern: je Zeile eine Wache (oder ein ganzer Wachentyp), ein
+Lehrgang und wie viele Leute ihn haben sollen. Die **Priorität** ist eine eigene Spalte —
+Rang 1 wird an *jeder* Wache bedient, bevor irgendwo Rang 2 anfängt, sonst gewinnt immer
+die größte Lücke. Darunter ausklappbar, auf welche Wachen eine Regel tatsächlich fällt und
+welche davon zu dünn besetzt sind, um jemanden abzugeben.
+
+![Einstellungen — eigene Ortsnamen](img/panel-ortsnamen.jpg)
+
+**fahrzeuge** — Funkrufnamen, und die Tabelle *eigene Ortsnamen*: was der Ortsname auf dem
+Fahrzeug werden soll. Links steht entweder ein Name, wie ihn der Geocoder liefert, oder
+eine **Postleitzahl** — die zählt dann als eigener Ort. Genau dafür ist sie da: `60549` ist
+der Frankfurter Flughafen, und die Stadt allein unterscheidet ihn von keiner anderen
+Frankfurter Wache. Darunter ausklappbar, welche Wache wie ermittelt wurde und was daraus
+wird; das ist die Antwort auf „warum heißt das Fahrzeug so".
 
 ---
 
