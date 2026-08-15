@@ -275,7 +275,7 @@ lassen. Deine Einstellungen, deine Zugangsdaten, deine Lizenz und deine Funkrufn
 — die sind gar nicht erst im Paket drin. Neue Fahrzeugtypen kommen beim nächsten Start von
 selbst dazu.
 
-Was sich geändert hat, steht im Discord unter `#changelog`.
+Was sich geändert hat, steht im Discord.
 
 ---
 
@@ -324,12 +324,13 @@ dir.
 
 ## Support & Kontakt
 
+Alles läuft über Discord: Schlüssel, Fragen, Fehler, Wünsche.
+
 Discord: <!-- TODO: Einladungslink eintragen -->
 
-Fehler und Wünsche gehören in `#bugs-und-wünsche` — bitte mit Version, was du erwartet hast,
-was passiert ist und dem passenden Auszug aus `logs/`. Alles Persönliche (Kauf, Schlüssel,
-dein Account) über ein Ticket. **Niemals Passwörter, Zugangsdaten oder Screenshots mit
-Login posten** — auch nicht an das Team, wir fragen danach nie.
+Bei einem Fehler hilft es sehr, wenn du die Version, was du erwartet hast, was passiert ist
+und den passenden Auszug aus `logs/` gleich mitschickst. **Niemals Passwörter, Zugangsdaten
+oder Screenshots mit Login posten** — auch nicht an das Team, wir fragen danach nie.
 
 ## Hinweise
 
