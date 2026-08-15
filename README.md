@@ -3,6 +3,9 @@
 **Auto-Disponent für [leitstellenspiel.de](https://www.leitstellenspiel.de).**
 Er fährt die Leitstelle, während du etwas anderes machst.
 
+💬 **Alles läuft über Discord** — Schlüssel, Fragen, Fehler, Neuigkeiten:
+**https://discord.gg/86u24ZDyAN**
+
 ---
 
 > ## 🚧 Noch in Entwicklung — Release folgt in Kürze!
