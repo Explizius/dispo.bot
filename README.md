@@ -1,6 +1,7 @@
-# dispo.bot
+# dispo.bot — Leitstellenspiel Bot
 
-**Auto-Disponent für [leitstellenspiel.de](https://www.leitstellenspiel.de).**
+**Auto-Disponent für [leitstellenspiel.de](https://www.leitstellenspiel.de) — international
+Missionchief.**
 Er fährt die Leitstelle, während du etwas anderes machst.
 
 💬 **Alles läuft über Discord** — Schlüssel, Fragen, Fehler, Neuigkeiten:
@@ -8,14 +9,13 @@ Er fährt die Leitstelle, während du etwas anderes machst.
 
 ---
 
-> ## 🚧 Noch in Entwicklung — Release folgt in Kürze!
->
-> **Dieses Repository ist absichtlich noch leer.** Es gibt aktuell **keinen Download** und
-> **keine Version** zum Herunterladen. Hier erscheint später ausschließlich die fertige
-> `dispo.exe` unter *Releases* — der Quellcode bleibt privat.
->
-> Wer Bescheid wissen will, wenn es losgeht: oben rechts auf **Watch → Custom → Releases**,
-> dann gibt GitHub Bescheid, sobald die erste Version da ist.
+## Jetzt herunterladen
+
+**[➜ Neueste Version](https://github.com/Explizius/dispo.bot/releases/latest)** — Windows und
+macOS, unter *Assets*. Entpacken, doppelklicken, im Browser einrichten. Kein Node.js, keine
+Installation, keine Adminrechte.
+
+Zum Ausprobieren brauchst du einen Schlüssel — den gibt es im Discord.
 
 ---
 
@@ -54,6 +54,10 @@ was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 | **Wasser & Schaum** | Braucht ein Brand 14.800 Liter Sonderlöschmittel, fahren die großen Tanks zuerst |
 | **Fehlendes Personal** | Wird aufgefüllt — und zwar so, dass dir nicht das Löschfahrzeug fehlt, wenn es zehn Minuten später brennt |
 | **Kein Fahrzeug fährt doppelt** | Was schon unterwegs ist, wird abgezogen. Du wirst nie drei RTW bei einem Patienten stehen haben |
+| **Er löst festgefahrene Lagen auf** | Wenn jede Drehleiter auf einem Einsatz steht, der selbst nicht fertig wird, kommt kein einziger mehr zum Abschluss — und von allein löst sich das nie, weil Fahrzeuge erst beim Abschluss frei werden. Dann zieht er gezielt ab, macht die Einsätze fertig, die fertig werden *können*, und der Rest bekommt seine Fahrzeuge von selbst zurück |
+| **Neue Einsatzarten bleiben nicht liegen** | Das Spiel verrät erst dann, was ein Einsatz braucht, wenn schon jemand hinfährt. Bei einer Einsatzart, die es gerade erst erfunden hat, fährt deshalb ein Fahrzeug hin und *fragt* — statt dass der Einsatz tagelang offen steht |
+| **Abrollbehälter & Anhänger** | Ein AB fährt nicht allein. Steht das WLF gerade woanders, holt er es zurück zur Wache, hängt an und schickt beide zusammen los |
+| **Spezialfahrzeuge bleiben für Spezialfälle** | Das FLF mit 12.000 Litern war sonst die erste Wahl für jeden Wasserbedarf in Reichweite. Angehakt fährt es zuletzt — außer die übrige Flotte deckt die Menge wirklich nicht |
 
 ### Transport
 
@@ -72,6 +76,7 @@ was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 | **Bei den Partnern mitverdienen** | Mit eigenem Radius, eigener Untergrenze und einer Obergrenze, wie viele Fahrzeuge dabei überhaupt gebunden sein dürfen. Deine eigene Leitstelle wird davon nicht leergeräumt |
 | **Fester Fahrzeugsatz** | „Zu jedem Verbandseinsatz einen FuStW, und nie mehr als elf gleichzeitig unterwegs" ist eine Einstellung, keine Fleißarbeit |
 | **Teilen mit echtem Vorsprung** | Erst fährt *ein* Fahrzeug los, dann bleibt der Einsatz eine einstellbare Zeit lang liegen, damit deine Partner auch ankommen. Danach macht er ihn selbst fertig. Ohne das ist Teilen nur eine Geste |
+| **Von jedem Typ bleibt etwas zu Hause** | Der einzige Radlader, an einen Partner verliehen, ist für die halbe Stunde weg, in der dein eigener Erdrutsch ihn will. Wie viele je Typ der Verband nie bekommt, stellst du ein |
 | **Hausregeln deines Verbands** | „Nur Einsätze ab 10 benötigten Fahrzeugen freigeben" und „keine Rettungsdienst-Einsätze" hakst du an, statt dich daran zu erinnern |
 
 ### Personal
@@ -82,6 +87,7 @@ was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 | **Lehrgänge, ohne Excel-Liste** | Du sagst „jede Feuerwache soll 3 Gefahrgut und 6 Dekon-P können", er sucht die passenden Kurse, schickt die Leute hin und hört auf, wenn das Ziel erreicht ist. Mit **Prioritäten**: das Wichtigste wird überall erledigt, bevor irgendwo das Zweitwichtigste anfängt |
 | **Kurse werden vollgemacht** | Mit Leuten aus allen Wachen, die ihn brauchen — ein halbleerer Klassenraum blockiert genauso lange wie ein voller |
 | **Die Ausgebildeten landen auf dem Fahrzeug** | Ein GW-Gefahrgut mit ungeschulter Besatzung beantwortet nichts. Er bindet die richtigen Leute fest, ohne dabei einem anderen Fahrzeug die Besatzung wegzunehmen |
+| **Eigene Schule oder Verbandskurs** | Beides gleichzeitig: an der eigenen Schule kostet ein Lehrgang nichts, belegt aber einen Klassenraum — beim Verband ist es umgekehrt. Er nimmt das Günstigere, und wie viel ein Verbandskurs höchstens kosten darf, sagst du |
 | **Deine Wachen bleiben einsatzfähig** | Unter einer von dir gesetzten Mindeststärke gibt eine Wache niemanden in den Lehrgang ab |
 
 ### Nebenbei
@@ -90,6 +96,7 @@ was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 |---|---|
 | **Funkrufnamen** | Neue Fahrzeuge heißen `Fl. Langen HLF 3-10` statt `HLF 20` — nach deinem Schema, automatisch weitergezählt. Von Hand benannte bleiben, wie sie sind |
 | **Engpässe** | Er merkt sich, woran deine Einsätze tatsächlich gescheitert sind. Die Antwort auf „welches Fahrzeug kaufe ich als nächstes" — aus deinen echten Einsätzen, nicht aus dem Bauchgefühl |
+| **Fahrzeuge ohne Besatzung** | Ein Fahrzeug, das keiner besetzt, nimmt die Alarmierung an und fährt trotzdem nicht los. Auf Wunsch stellt er es auf *nicht einsatzbereit*, damit es keinen Einsatz mehr blockiert — und holt es zurück, sobald jemand darauf sitzt |
 | **Täglicher Login** | Wird abgeholt |
 | **Kein offener Spiel-Tab nötig** | Neue Einsätze entstehen nur, solange jemand danach fragt — das macht er mit |
 | **Dienstplan** | Feste Dienstzeiten statt 24/7, jeden Tag um ein paar Minuten verschoben. Außerhalb ist er komplett aus und ausgeloggt |
@@ -100,7 +107,7 @@ was er darf, und fängst mit dem an, was dir am meisten Arbeit abnimmt.
 ## Das Bedienpanel
 
 Die ganze Bedienung ist eine Seite im Browser, auf Deutsch, auf deinem eigenen Rechner
-(`http://127.0.0.1:8787`). Kein Konto, keine Anmeldung, keine Cloud. Sechs Reiter.
+(`http://127.0.0.1:8787`). Kein Konto, keine Anmeldung, keine Cloud. Sieben Reiter.
 
 ### einsätze — was gerade läuft
 
@@ -147,9 +154,10 @@ Ein fertiger Lehrgang bringt nichts, solange niemand eingeteilt ist.
 
 ### fahrzeuge — dein Fuhrpark
 
-Alle Typen mit Bestand und wie viele davon gerade frei sind. Rot markiert heißt: für diesen
-Typ ist nichts hinterlegt, der wird nie alarmiert — ein Blick, und du weißt, ob dein Neukauf
-tatsächlich mitspielt. Darunter, welche Anforderungen deine Flotte überhaupt abdecken kann.
+Alle Typen mit Bestand und wie viele davon gerade frei sind, mit Suche. Rot markiert heißt:
+für diesen Typ ist nichts hinterlegt, der wird nie alarmiert — ein Blick, und du weißt, ob
+dein Neukauf tatsächlich mitspielt. Darunter, welche Anforderungen deine Flotte überhaupt
+abdecken kann.
 
 ![Funkrufnamen — die Vorlagen](img/panel-funkrufnamen.jpg)
 
@@ -162,6 +170,10 @@ Alles, was der Bot tut, in einem Formular — mit Suche, deutscher Beschriftung 
 Erklärung hinter jedem `?`. Was man normalerweise nicht anfasst, liegt hinter dem Schalter
 *erweitert*.
 
+### über — Version und was sich geändert hat
+
+Welche Version läuft, und was sich seitdem geändert hat.
+
 ---
 
 ## Was du einstellst
@@ -172,7 +184,7 @@ Acht Bereiche. Das meiste stellst du einmal ein und schaust nie wieder hin.
 |---|---|
 | **konto** | Dein Spiel-Login und der Lizenzschlüssel. Mehrere Accounts, jeder mit eigenem An/Aus |
 | **dienst** | Wann er arbeitet, und wie oft er nachschaut |
-| **einsätze** | Wie weit deine Fahrzeuge fahren und ab welchem Wert ein Einsatz sich lohnt |
+| **einsätze** | Wie weit deine Fahrzeuge fahren, ab welchem Wert ein Einsatz sich lohnt, und welche Spezialfahrzeuge aufgehoben bleiben |
 | **verband** | Mitfahren bei den Partnern, und was du selbst freigibst |
 | **transport** | Wohin ein beladenes Fahrzeug fährt |
 | **personal** | Anwerben, ausbilden, aufs Fahrzeug setzen |
@@ -248,7 +260,9 @@ Rund 90 MB Speicherplatz und ein Browser.
    (macOS: `./dispo`).
 3. **Panel öffnen** — im Fenster steht nach ein paar Sekunden eine Adresse wie
    `http://127.0.0.1:8787`. Die im Browser aufmachen.
-4. **Lizenz eintragen** unter *einstellungen → konto*, dann *aktivieren*.
+4. **Lizenz eintragen** unter *einstellungen → konto*, dann *aktivieren*. Zum Ausprobieren
+   gibt es einen kostenlosen Schlüssel über **24 Stunden** — im Discord im Ticket danach
+   fragen.
    **Ab diesem Klick läuft deine Laufzeit, nicht ab dem Kauf** — ein Schlüssel kann also
    liegen bleiben, ohne einen Tag zu verlieren.
 5. **Login und Dienstzeit setzen**, danach in Ruhe durchgehen, was er noch übernehmen soll.
@@ -266,7 +280,7 @@ schreibt sie beim Start hin.
 Alles andere lehnt er ab, und zwar absichtlich: auf dieser Seite stehen deine Zugangsdaten,
 die gehört nicht ins offene Internet.
 
-Auf dem Telefon wird aus jeder Tabellenzeile ein lesbarer Block, und alle sechs Reiter sind
+Auf dem Telefon wird aus jeder Tabellenzeile ein lesbarer Block, und alle Reiter sind
 gleichzeitig sichtbar.
 
 ---
@@ -288,7 +302,14 @@ Der Bot braucht einen Schlüssel, den du direkt im Panel einträgst. Er läuft *
 Aktivierung** und gilt für **eine laufende Installation** — beliebig viele Spielaccounts,
 aber nicht zwei Rechner gleichzeitig.
 
-Schlüssel gibt es über Discord.
+Schlüssel gibt es über Discord. Zum Testen einmalig einen über **24 Stunden**, kostenlos und
+ohne Zahlungsdaten: alle Funktionen, er läuft von selbst aus, es verlängert sich nichts.
+
+Der Schlüssel ist **personengebunden und nicht übertragbar** — weitergeben, verkaufen oder
+öffentlich posten sperrt ihn. Auch das Programm selbst darf nicht weitergegeben, verkauft
+oder verändert werden; alle Rechte an Bot, Panel und Planungsserver bleiben beim Autor.
+Es gibt **keine Gewähr** für Funktion, Verfügbarkeit oder ein bestimmtes Ergebnis im Spiel,
+und **ab der Aktivierung keine Erstattung** — ab da läuft die Laufzeit.
 
 ---
 
