@@ -7,6 +7,9 @@ Er fährt die Leitstelle, während du etwas anderes machst.
 💬 **Alles läuft über Discord** — Schlüssel, Fragen, Fehler, Neuigkeiten:
 **https://discord.gg/86u24ZDyAN**
 
+🛒 **Offizieller elitepvpers-Thread** (Verkäufer: **Explizius**):
+**https://www.elitepvpers.com/forum/browsergames-trading/5387892-dispo-bot-auto-disponent-f-r-leitstellenspiel-de-windows-mac.html**
+
 ---
 
 ## Jetzt herunterladen
