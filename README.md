@@ -14,8 +14,8 @@ Er fährt die Leitstelle, während du etwas anderes machst.
 
 ## Jetzt herunterladen
 
-**[➜ Neueste Version](https://github.com/Explizius/dispo.bot/releases/latest)** — Windows,
-macOS und Linux, unter *Assets*. Entpacken, starten, im Browser einrichten. Kein Node.js,
+**[➜ Neueste Version](https://github.com/Explizius/dispo.bot/releases/latest)** — Windows
+und macOS, unter *Assets*. Linux kommt später. Entpacken, starten, im Browser einrichten. Kein Node.js,
 keine Installation, keine Adminrechte.
 
 Zum Ausprobieren brauchst du einen Schlüssel — den gibt es im Discord.
@@ -253,7 +253,7 @@ Rund 90 MB Speicherplatz und ein Browser.
 |---|---|
 | **Windows** | 10/11, 64 Bit — `dispo.bot-win-*.zip` entpacken, `dispo.exe` doppelklicken. Beim ersten Start meldet sich eventuell SmartScreen: *Weitere Informationen* → *Trotzdem ausführen*. Das liegt an der fehlenden (teuren) Signatur, nicht am Inhalt |
 | **macOS** | 11 (Big Sur) oder neuer, Apple Silicon — `dispo.bot-mac-*.zip`. macOS blockiert heruntergeladene Programme; im Paket liegt eine `LIESMICH-mac.txt` mit dem einen Befehl, der das aufhebt. Für einen älteren Intel-Mac im Discord fragen |
-| **Linux** | x86-64, glibc 2.36 oder neuer (Debian 12, Ubuntu 22.04, Fedora 37 und alles Neuere) — `dispo.bot-linux-*.zip` entpacken, `./dispo` im Terminal starten. Kein Doppelklick, kein systemd-Dienst nötig: er startet sich nach einem Absturz selbst neu. Für Alpine oder einen ARM-Server im Discord fragen |
+| **Linux** | Noch nicht verfügbar, kommt später. Neuigkeiten im Discord |
 
 ---
 
@@ -261,7 +261,7 @@ Rund 90 MB Speicherplatz und ein Browser.
 
 1. **Herunterladen** — das Paket für dein System, unter *Releases*.
 2. **Entpacken und starten** — in einen eigenen Ordner, dann `dispo.exe` doppelklicken
-   (macOS und Linux: `./dispo`).
+   (macOS: `./dispo`).
 3. **Panel öffnen** — im Fenster steht nach ein paar Sekunden eine Adresse wie
    `http://127.0.0.1:8787`. Die im Browser aufmachen.
 4. **Lizenz eintragen** unter *einstellungen → konto*, dann *aktivieren*. Zum Ausprobieren
